@@ -22,7 +22,7 @@ class RetryTraitTest extends TestCase
     private static $customDelayMethodCalled = false;
     private static $customRetryIfMethodCalled = false;
 
-    public function testNoRetryAnnotationsDoesNotRetry(): void
+    public function testNoRetryAnnotationsDoesNotRetry()
     {
         $this->assertFalse($this->checkShouldRetryAgain(1));
     }
@@ -30,7 +30,7 @@ class RetryTraitTest extends TestCase
     /**
      * @retryAttempts 3
      */
-    public function testRetryAttempts(): void
+    public function testRetryAttempts()
     {
         self::$timesCalled++;
         $retryAttempts = $this->getRetryAttemptsAnnotation();
@@ -46,7 +46,7 @@ class RetryTraitTest extends TestCase
      * @retryDelaySeconds 1
      * @depends testRetryAttempts
      */
-    public function testRetryDelaySeconds(): void
+    public function testRetryDelaySeconds()
     {
         $currentTimestamp = time();
         if (empty(self::$timestampCalled)) {
@@ -58,7 +58,7 @@ class RetryTraitTest extends TestCase
         self::$timestampCalled = null;
     }
 
-    public function testExponentialBackoff(): void
+    public function testExponentialBackoff()
     {
         $retryAttempt = 0;
         $leeway = .01;
@@ -91,7 +91,7 @@ class RetryTraitTest extends TestCase
      * @retryDelayMethod customDelayMethod foo
      * @depends testRetryAttempts
      */
-    public function testCustomRetryDelayMethod(): void
+    public function testCustomRetryDelayMethod()
     {
         self::$timesCalled++;
         if (self::$timesCalled === 1) {
@@ -108,7 +108,7 @@ class RetryTraitTest extends TestCase
      * @retryDelaySeconds 1
      * @depends testCustomRetryDelayMethod
      */
-    public function testRetryForSeconds(): void
+    public function testRetryForSeconds()
     {
         $currentTimestamp = time();
         if (empty(self::$timestampCalled)) {
@@ -126,7 +126,7 @@ class RetryTraitTest extends TestCase
      * @retryIfException InvalidArgumentException
      * @depends testCustomRetryDelayMethod
      */
-    public function testRetryIfException(): void
+    public function testRetryIfException()
     {
         self::$timesCalled++;
         if (self::$timesCalled === 1) {
@@ -143,7 +143,7 @@ class RetryTraitTest extends TestCase
      * @retryIfException DomainException
      * @depends testRetryIfException
      */
-    public function testRetryIfExceptionMultiple(): void
+    public function testRetryIfExceptionMultiple()
     {
         self::$timesCalled++;
         if (self::$timesCalled === 1) {
@@ -159,7 +159,7 @@ class RetryTraitTest extends TestCase
      * @retryIfMethod customRetryIfMethod foo
      * @depends testRetryIfExceptionMultiple
      */
-    public function testRetryIfMethod(): void
+    public function testRetryIfMethod()
     {
         self::$timesCalled++;
         if (self::$timesCalled === 1) {
@@ -174,9 +174,9 @@ class RetryTraitTest extends TestCase
     /**
      * @var int $attempt
      */
-    private function customDelayMethod($attempt): void
+    private function customDelayMethod($attempt)
     {
-        $this->assertIsInt($attempt);
+        $this->assertTrue(is_int($attempt));
         $this->assertEquals(1, $attempt);
 
         // Test the custom arg

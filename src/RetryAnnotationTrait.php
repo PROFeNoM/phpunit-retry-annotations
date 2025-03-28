@@ -102,7 +102,7 @@ trait RetryAnnotationTrait
         return $retryDelaySeconds;
     }
 
-    private function getRetryDelayMethodAnnotation(): ?array
+    private function getRetryDelayMethodAnnotation()
     {
         $annotations = $this->getTestAnnotations();
 
@@ -140,7 +140,7 @@ trait RetryAnnotationTrait
         return $delayMethod;
     }
 
-    private function getRetryForSecondsAnnotation(): ?int
+    private function getRetryForSecondsAnnotation()
     {
         $annotations = $this->getTestAnnotations();
 
@@ -184,7 +184,7 @@ trait RetryAnnotationTrait
         return $retryForSeconds;
     }
 
-    private function getRetryIfExceptionAnnotations(): ?array
+    private function getRetryIfExceptionAnnotations()
     {
         $annotations = $this->getTestAnnotations();
 
@@ -200,7 +200,7 @@ trait RetryAnnotationTrait
         return null;
     }
 
-    private function validateRetryIfExceptionAnnotation(string $retryIfException): void
+    private function validateRetryIfExceptionAnnotation(string $retryIfException)
     {
         if ('' === $retryIfException) {
             throw new InvalidArgumentException(
@@ -216,7 +216,7 @@ trait RetryAnnotationTrait
         }
     }
 
-    private function getRetryIfMethodAnnotation(): ?array
+    private function getRetryIfMethodAnnotation()
     {
         $annotations = $this->getTestAnnotations();
 
@@ -236,7 +236,7 @@ trait RetryAnnotationTrait
         ];
     }
 
-    private function validateRetryIfMethodAnnotation(string $retryIfMethod): void
+    private function validateRetryIfMethodAnnotation(string $retryIfMethod)
     {
         if ('' === $retryIfMethod) {
             throw new InvalidArgumentException(

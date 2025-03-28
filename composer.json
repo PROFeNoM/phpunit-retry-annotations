@@ -1,5 +1,5 @@
 {
-    "name": "bshaffer/phpunit-retry-annotations",
+    "name": "profenom/phpunit-retry-annotations",
     "description": "Traits for retrying test methods and classes in PHPUnit",
     "keywords": ["test", "retry", "phpunit"],
     "homepage": "https://github.com/bshaffer/phpunit-retry",
@@ -13,8 +13,8 @@
         }
     ],
     "require": {
-        "php": "^7.1|^8.0",
-        "phpunit/phpunit": "^7.1|^8.0|^9.0"
+        "php": "^7.0|^8.0",
+        "phpunit/phpunit": "<10"
     },
     "autoload": {
         "psr-4": {

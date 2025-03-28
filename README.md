@@ -5,7 +5,7 @@ Traits for retrying test methods and classes in PHPUnit.
 ## Installation
 
 ```
-composer require --dev bshaffer/phpunit-retry-annotations
+composer require --dev profenom/phpunit-retry-annotations
 ```
 
 ## Configuring retries
